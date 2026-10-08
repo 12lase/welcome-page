@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Let's Get to Know You</title>
+<meta name="description" content="Tell me a little about yourself so I can pick things you will love.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: one calm, centred-left column over slow drifting flavour-colour light; one big button; three small promises. */
+:root{
+  --bg:#F3FAF6;          /* mint-tinted white */
+  --ink:#10332B;         /* deep green-black */
+  --muted:#4C6B62;
+  --mango:#F6A21A;       /* button + highlight */
+  --mango-ink:#2A1A00;
+  --lime:#B9E04A;
+  --berry:#E0568A;
+  --card:#FFFFFF;
+  --line:#CFE5DA;
+  --glow-a:.55; --glow-b:.45;
+  --font-display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --font-body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D211C; --ink:#EAF6F0; --muted:#9DBBB0; --card:#14302A; --line:#27483F;
+    --mango:#F7B038; --mango-ink:#2A1A00; --lime:#9CC93A; --berry:#E8699A;
+    --glow-a:.30; --glow-b:.25; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D211C; --ink:#EAF6F0; --muted:#9DBBB0; --card:#14302A; --line:#27483F;
+  --mango:#F7B038; --mango-ink:#2A1A00; --lime:#9CC93A; --berry:#E8699A;
+  --glow-a:.30; --glow-b:.25; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+html{color-scheme:light}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6}
+.stage{position:relative;overflow:hidden;min-height:100%;padding-inline:20px;padding-block:56px 48px}
+.glow{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none}
+.g1{width:380px;height:380px;background:var(--mango);opacity:var(--glow-a);top:-90px;right:-80px;animation:drift1 16s ease-in-out infinite alternate}
+.g2{width:320px;height:320px;background:var(--lime);opacity:var(--glow-b);bottom:-70px;left:-90px;animation:drift2 19s ease-in-out infinite alternate}
+.g3{width:240px;height:240px;background:var(--berry);opacity:calc(var(--glow-b) - .1);top:46%;right:12%;animation:drift3 22s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(-60px,50px) scale(1.12)}}
+@keyframes drift2{to{transform:translate(70px,-40px) scale(1.1)}}
+@keyframes drift3{to{transform:translate(-40px,-60px) scale(.9)}}
+.wrap{position:relative;max-width:640px;margin-inline:auto;display:flex;flex-direction:column;gap:22px;min-width:0}
+.hello{font-weight:500;color:var(--muted);letter-spacing:.04em;margin:0}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.6rem,9vw,4.4rem);line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h1 .hl{background:linear-gradient(transparent 62%,var(--mango) 62% 92%,transparent 92%);padding-inline:.06em}
+.lede{font-size:1.15rem;max-width:34em;margin:0;color:var(--ink)}
+.cta{align-self:flex-start;display:inline-flex;align-items:center;gap:12px;background:var(--mango);color:var(--mango-ink);font-family:var(--font-display);font-weight:800;font-size:1.15rem;text-decoration:none;padding:16px 28px;border-radius:999px;box-shadow:0 10px 24px -10px var(--mango);transition:transform .2s ease,box-shadow .2s ease}
+.cta:hover{transform:translateY(-3px);box-shadow:0 16px 28px -12px var(--mango)}
+.cta:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.cta .arrow{display:inline-block;transition:transform .2s ease}
+.cta:hover .arrow{transform:translateX(5px)}
+.time{margin:0;color:var(--muted);font-size:.95rem}
+.perks{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:12px}
+.perks li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:2px}
+.perks b{font-family:var(--font-display);font-weight:600;font-size:1.05rem}
+.perks span{color:var(--muted);font-size:.95rem}
+.sign{margin:10px 0 0;color:var(--muted)}
+.sign b{color:var(--ink);font-family:var(--font-display)}
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.42s}.d5{animation-delay:.54s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (min-width:640px){.perks{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion:reduce){.glow,.rise{animation:none}.cta,.cta .arrow{transition:none}}
+</style>
+
+</head>
+<body>
+<main class="stage">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+  <div class="wrap">
+    <p class="hello rise d1">Hi, I'm Tio.</p>
+    <h1 class="rise d2">Let's get to <span class="hl">know you.</span></h1>
+    <p class="lede rise d3">Thank you for being part of this. Tell me what you love, what you can't stand, and when your birthday is. I'll use it to pick things you'll actually enjoy and to remember you on the days that matter.</p>
+    <a class="cta rise d4" id="start" href="https://docs.google.com/forms/d/e/1FAIpQLSfKFfO3_KeyjGUWL-iLuxXbfhm8K8qbd5pZ7Ti1XGQziXc3bQ/viewform" target="_blank" rel="noopener">Tell me about you <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <p class="time rise d4">Takes about 2 minutes. Only I see your answers.</p>
+    <ul class="perks rise d5">
+      <li><b>A birthday treat</b><span>Something small from me, every year.</span></li>
+      <li><b>First look</b><span>New flavors and offers before anyone else.</span></li>
+      <li><b>Picks for your taste</b><span>No more guessing what you'd like.</span></li>
+    </ul>
+    <p class="sign rise d5">With thanks, <b>Tio</b></p>
+  </div>
+</main>
+
+</body>
+</html>
